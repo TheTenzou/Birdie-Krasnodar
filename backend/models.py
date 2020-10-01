@@ -14,9 +14,21 @@ class User(AbstractUser):
 class Price_bracket(models.Model):
     name = models.CharField(max_length=20)
 
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
 
 class Food_type(models.Model):
     name = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 class Restaurant(models.Model):
@@ -30,6 +42,8 @@ class Restaurant(models.Model):
         null=True
         )
 
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
