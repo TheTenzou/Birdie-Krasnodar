@@ -42,6 +42,16 @@ class NewsAdmin(admin.ModelAdmin):
     ]
 
 
+class ReviewAdmin(admin.ModelAdmin):
+    pass
+
+
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Restaurant, RestaurantAdmin)
 admin.site.register(models.News, NewsAdmin)
+admin.site.register(models.Review, ReviewAdmin)
+admin.site.register(models.Comment, CommentAdmin)
