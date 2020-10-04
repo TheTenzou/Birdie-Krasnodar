@@ -36,6 +36,7 @@ class Restaurant(models.Model):
     description = models.TextField(max_length=1000, help_text='Описание ресторана.')
     rating = models.FloatField(blank=True, null=True)
     food_type = models.ManyToManyField(Food_type)
+    price_bracket = models.ForeignKey(Price_bracket, on_delete=models.PROTECT)
     card_picture = models.ImageField(
         upload_to='file_storage/restrant_card_picture', 
         blank=True, 
