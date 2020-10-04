@@ -43,7 +43,9 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('headline', 'restaurant', 'user', 'publication_date')
+    list_filter = ['restaurant', 'publication_date']
+    search_fields = ['headline']
 
 
 class CommentAdmin(admin.ModelAdmin):
