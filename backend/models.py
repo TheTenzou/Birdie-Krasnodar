@@ -33,7 +33,7 @@ class Food_type(models.Model):
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=20, help_text='Название ресторана.')
-    description = models.CharField(max_length=1000, help_text='Описание ресторана.')
+    description = models.TextField(max_length=1000, help_text='Описание ресторана.')
     rating = models.FloatField(blank=True, null=True)
     food_type = models.ManyToManyField(Food_type)
     card_picture = models.ImageField(
@@ -69,10 +69,15 @@ class Food_picture(models.Model):
     picture = models.ImageField(upload_to='file_storage/food_pictures')
 
 
+class News_type(models.Model):
+    name = models.CharField(max_length=50)
+
+
 class News(models.Model):
     headline = models.CharField(max_length=100)
-    news_text = models.CharField(max_length=1000)
+    news_text = models.TextField(max_length=1000)
     publication_date = models.DateTimeField(auto_now_add=True)
+    news_type = models.ForeignKey(News_type, on_delete=models.PROTECT)
     card_picture = models.ImageField(
         upload_to='file_storage/news_picture_card',
         blank=True,
@@ -96,7 +101,7 @@ class Review(models.Model):
     up_voite_users = models.ManyToManyField(User, related_name='up_voite_users')
     down_voite_users = models.ManyToManyField(User, related_name='down_voite_users')
     headline = models.CharField(max_length=100)
-    text = models.CharField(max_length=500)
+    text = models.TextField(max_length=500)
 
     class Meta():
         ordering = ['headline']
@@ -108,4 +113,4 @@ class Review(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    text = models.CharField(max_length=500)
+    text = models.TextField(max_length=500)
