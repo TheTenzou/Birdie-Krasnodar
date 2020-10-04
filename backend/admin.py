@@ -5,6 +5,9 @@ from . import models
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
     model = models.User
+    list_display = ('username', 'is_staff', 'first_name', 'last_name')
+    list_filter = ['is_staff']
+    search_fields = ['first_name', 'last_name'] 
 
 
 class RestaurantPicturesInLine(admin.TabularInline):
@@ -28,6 +31,9 @@ class RestaurantAdmin(admin.ModelAdmin):
         FoodPicturesInLine,
         AddressInLine # TODO fix map
     ]
+    list_display = ('name',)
+    list_filter = ['food_type', 'price_bracket']
+    search_fields = ['name', 'description']
 
 
 class NewsPictures(admin.TabularInline):
