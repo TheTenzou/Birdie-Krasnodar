@@ -40,6 +40,9 @@ class NewsAdmin(admin.ModelAdmin):
     inlines = [
         NewsPictures,
     ]
+    list_display = ('headline', 'news_type', 'publication_date')
+    list_filter = ['news_type', 'publication_date']
+    search_fields = ['headline', 'news_text']
 
 
 class ReviewAdmin(admin.ModelAdmin):
