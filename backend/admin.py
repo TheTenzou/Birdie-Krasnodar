@@ -45,11 +45,13 @@ class NewsAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('headline', 'restaurant', 'user', 'publication_date')
     list_filter = ['restaurant', 'publication_date']
-    search_fields = ['headline']
+    search_fields = ['headline', 'user', 'restaurant', 'headline']
 
 
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('news', 'user', 'publication_date')
+    list_filter = ['news', 'publication_date']
+    search_fields = ['text', 'user', 'news']
 
 
 admin.site.register(models.User, UserAdmin)
