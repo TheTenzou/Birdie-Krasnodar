@@ -102,6 +102,7 @@ class Review(models.Model):
     down_voite_users = models.ManyToManyField(User, related_name='down_voite_users')
     headline = models.CharField(max_length=100)
     text = models.TextField(max_length=500)
+    publication_date = models.DateTimeField(auto_now_add=True)
 
     class Meta():
         ordering = ['headline']
@@ -114,3 +115,4 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     text = models.TextField(max_length=500)
+    publication_date = models.DateTimeField(auto_now_add=True)
