@@ -16,6 +16,8 @@ class Price_bracket(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Ценовая категория'
+        verbose_name_plural = 'Ценовые категории'
 
     def __str__(self):
         return self.name
@@ -26,6 +28,8 @@ class Food_type(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Тип еды'
+        verbose_name_plural = 'Типы еды'
 
     def __str__(self):
         return self.name
@@ -75,6 +79,9 @@ class Food_picture(models.Model):
 class News_type(models.Model):
     name = models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name = 'Тип новости'
+        verbose_name_plural = 'Типы ресторанов'
 
 class News(models.Model):
     headline = models.CharField(max_length=100)
@@ -127,3 +134,4 @@ class Comment(models.Model):
 
     class Meta():
         verbose_name = 'Коментарий'
+        verbose_name_plural = 'Коментарии'
