@@ -4,7 +4,7 @@ from django.contrib.gis.db import models
 
 # Create your models here.
 class User(AbstractUser):
-    profile_picture = models.ImageField(
+    profile_picture = models.FileField(
         upload_to='file_storage/profile_pictures', 
         blank=True, 
         null=True
@@ -37,7 +37,7 @@ class Restaurant(models.Model):
     rating = models.FloatField(blank=True, null=True)
     food_type = models.ManyToManyField(Food_type)
     price_bracket = models.ForeignKey(Price_bracket, on_delete=models.PROTECT)
-    card_picture = models.ImageField(
+    card_picture = models.FileField(
         upload_to='file_storage/restrant_card_picture', 
         blank=True, 
         null=True
@@ -45,6 +45,8 @@ class Restaurant(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Рестаран'
+        verbose_name_plural = 'Рестораны'
 
     def __str__(self):
         return self.name
@@ -58,7 +60,7 @@ class Address(models.Model):
 
 class Restaurant_picture(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    picture = models.ImageField(
+    picture = models.FileField(
         upload_to='file_storage/restaurant_pictures', 
         blank=True, 
         null=True
@@ -67,7 +69,7 @@ class Restaurant_picture(models.Model):
 
 class Food_picture(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to='file_storage/food_pictures')
+    picture = models.FileField(upload_to='file_storage/food_pictures')
 
 
 class News_type(models.Model):
@@ -79,7 +81,7 @@ class News(models.Model):
     news_text = models.TextField(max_length=1000)
     publication_date = models.DateTimeField(auto_now_add=True)
     news_type = models.ForeignKey(News_type, on_delete=models.PROTECT)
-    card_picture = models.ImageField(
+    card_picture = models.FileField(
         upload_to='file_storage/news_picture_card',
         blank=True,
         null=True
@@ -87,13 +89,15 @@ class News(models.Model):
 
     class Meta():
         ordering = ['headline']
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
 
     def __str__(self):
         return self.headline
     
 class News_picture(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to='file_storage/news_pictures')
+    picture = models.FileField(upload_to='file_storage/news_pictures')
 
 
 class Review(models.Model):
@@ -108,6 +112,8 @@ class Review(models.Model):
 
     class Meta():
         ordering = ['headline']
+        verbose_name = 'Обзор'
+        verbose_name_plural = 'Обзоры'
     
     def __str__(self):
         return self.headline
@@ -118,3 +124,6 @@ class Comment(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     text = models.TextField(max_length=500)
     publication_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta():
+        verbose_name = 'Коментарий'
