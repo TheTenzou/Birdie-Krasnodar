@@ -7,8 +7,12 @@ class UserAdmin(admin.ModelAdmin):
     model = models.User
     list_display = ('username', 'is_staff', 'first_name', 'last_name')
     list_filter = ['is_staff']
-    search_fields = ['first_name', 'last_name'] 
+    search_fields = ['first_name', 'last_name', 'username'] 
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["profile_picture"].label = "Картика профиля"
+        return form
 
 class RestaurantPicturesInLine(admin.TabularInline):
     model = models.Restaurant_picture
