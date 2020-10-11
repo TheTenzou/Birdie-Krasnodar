@@ -119,7 +119,7 @@ class Review(models.Model):
     headline = models.CharField(max_length=100)
     text = models.TextField(max_length=500)
     publication_date = models.DateTimeField(auto_now_add=True)
-    is_useful = models.BooleanField()
+    rating = models.FloatField()
 
     class Meta():
         ordering = ['headline']

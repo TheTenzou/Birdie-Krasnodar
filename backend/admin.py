@@ -77,7 +77,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('headline', 'restaurant', 'user', 'publication_date')
-    list_filter = ['restaurant', 'publication_date', 'is_useful']
+    list_filter = ['restaurant', 'publication_date'] 
     search_fields = ['headline', 'user', 'restaurant', 'headline']
 
     def get_form(self, request, obj=None, **kwargs):
@@ -89,7 +89,7 @@ class ReviewAdmin(admin.ModelAdmin):
         form.base_fields['headline'].label = 'Заголовок'
         form.base_fields['text'].label = 'Текст'
         # form.base_fields['publication_date'].label = 'Дата публикации'
-        form.base_fields['is_useful'].label = '?'
+        form.base_fields['rating'].label = 'Оценка'
         return form
 
 
