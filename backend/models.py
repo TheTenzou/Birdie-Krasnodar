@@ -38,7 +38,6 @@ class Food_type(models.Model):
 class Restaurant(models.Model):
     name = models.CharField(max_length=20, help_text='Название ресторана.')
     description = models.TextField(max_length=1000, help_text='Описание ресторана.')
-    rating = models.FloatField(blank=True, null=True)
     food_type = models.ManyToManyField(Food_type)
     price_bracket = models.ForeignKey(Price_bracket, on_delete=models.PROTECT)
     card_picture = models.FileField(
@@ -75,6 +74,11 @@ class Food_picture(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     picture = models.FileField(upload_to='file_storage/food_pictures')
 
+
+class Restaurant_rating(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.FloatField()
 
 class News_type(models.Model):
     name = models.CharField(max_length=50)
