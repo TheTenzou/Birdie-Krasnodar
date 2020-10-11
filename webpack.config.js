@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
-    entry: path.resolve(__dirname, 'frontend/src/index.js'),
+    entry: path.resolve(__dirname, 'frontend/src/index.jsx'),
     output: {
         // options related to how webpack emits results
 
@@ -29,4 +29,7 @@ module.exports = {
             }
         ],
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    }
 };
