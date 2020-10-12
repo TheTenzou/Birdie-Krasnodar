@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'backend',
     'frontend',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 # Custom user model
