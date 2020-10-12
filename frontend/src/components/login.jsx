@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axiosInstance from "../axiosApi";
 
 class Login extends Component{
     constructor(prop){
@@ -14,8 +15,19 @@ class Login extends Component{
     }
 
     handleSubmit(event) {
-        alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
         event.preventDefault();
+        try {
+            const response = axiosInstance.post('/token/obtain/', {
+                username: this.state.username,
+                password: this.state.password
+            });
+            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.date.access;
+            localStorage.setItem('access_token', response.date.access);
+            localStorage.setItem('refresh_token', response.date.refresh);
+            return data;
+        } catch (error) {
+            throw error;
+        }
     }
 
     render() {
@@ -26,10 +38,10 @@ class Login extends Component{
                         Username:
                         <input name="username" type="text" value={this.state.username} onChange={this.handleChage}/>
                     </label>
-                    <lable>
+                    <label>
                         Password:
                         <input name="password" type="password" value={this.state.password} onChange={this.handleChage}/>
-                    </lable>
+                    </label>
                     <input type="submit" value="Submit"/>
                 </form>
             </div>

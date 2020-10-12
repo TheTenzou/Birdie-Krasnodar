@@ -9,3 +9,5 @@ const axiosInstace = axios.create({
         'accept': 'application/json'
     }
 });
+
+export default axiosInstace
