@@ -14,17 +14,17 @@ class Login extends Component{
         this.setState({[event.target.name]: event.target.value});
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = axiosInstance.post('/token/obtain/', {
+            const response = await axiosInstance.post('/token/obtain/', {
                 username: this.state.username,
                 password: this.state.password
             });
-            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.date.access;
-            localStorage.setItem('access_token', response.date.access);
-            localStorage.setItem('refresh_token', response.date.refresh);
-            return data;
+            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+            return response;
         } catch (error) {
             throw error;
         }
