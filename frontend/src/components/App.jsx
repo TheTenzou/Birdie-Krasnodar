@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import Login from "./login";
-import Signup from "./singup";
+import Signup from "./signup";
 
 class App extends Component{
     render(){
