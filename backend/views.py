@@ -10,6 +10,7 @@ from .serializers import UserSerialier
 # Create your views here.
 class UserCreate(APIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
 
     def post(self, request, format='json'):
         serializer = UserSerialier(data=request.data)
