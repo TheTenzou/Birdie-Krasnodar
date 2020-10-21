@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'backend',
+    'frontend',
     'rest_framework',
 ]
 
@@ -51,8 +52,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),  # 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),  #
 }
 
 SIMPLE_JWT = {
@@ -154,4 +155,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
