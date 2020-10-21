@@ -237,3 +237,6 @@ sketch
 
 # File storage
 file_storage
+
+# bundles
+bundle.js
