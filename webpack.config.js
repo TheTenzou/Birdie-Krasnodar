@@ -16,7 +16,7 @@ module.exports = {
     },
     module: {
             // configuration regarding modules
-            rules: [
+        rules: [
             {
                 // for any file with a suffix of js or jsx
                 test: /\.(js|jsx)?$/,
@@ -28,8 +28,20 @@ module.exports = {
                     // attach the presets to the loader (most projects use .babelrc file instead)
                     presets: ["@babel/preset-env", "@babel/preset-react"]
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                        }
+                    },
+                ],
             }
-            ]
+        ]
     },
     resolve: {
         extensions: ['.js', '.jsx'],
