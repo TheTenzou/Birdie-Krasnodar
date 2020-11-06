@@ -1,7 +1,6 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
-from .models import User, Restaurant, Price_bracket, Food_type
-
+from .models import *
 
 # Сериалезатор для пользователя
 class UserSerialier(serializers.ModelSerializer):
@@ -30,7 +29,7 @@ class UserSerialier(serializers.ModelSerializer):
 class PriceBracketSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Price_bracket
+        model = PriceBracket
         field = ('id', 'name')
 
 
@@ -38,7 +37,7 @@ class PriceBracketSerializer(serializers.ModelSerializer):
 class FoodTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Food_type
+        model = FoodType
         fields = ('id', 'name')
 
 # Сериалезаторо ресторана
