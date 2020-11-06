@@ -8,4 +8,4 @@ class NewsType(models.Model):
 
     class Meta:
         verbose_name = 'Тип новости'
-        verbose_name_plural = 'Типы ресторанов'
+        verbose_name_plural = 'Типы новостей'
