@@ -44,7 +44,6 @@ class RestaurantAdmin(admin.ModelAdmin):
         form = super().get_form(request, obj, **kwargs)
         form.base_fields['name'].label = 'Название'
         form.base_fields['description'].label = 'Описание'
-        form.base_fields['rating'].label = 'Рейтинг'
         form.base_fields['food_type'].label = 'Тип еды'
         form.base_fields['price_bracket'].label = 'Ценавой диапозон'
         form.base_fields['card_picture'].label = 'Кратинка для карточки'
