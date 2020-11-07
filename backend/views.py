@@ -4,7 +4,7 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import UserSerialier, RestaurantSerializer
+from .serializers import UserSerializer, RestaurantSerializer
 from .models import Restaurant
 
 # Create your views here.
