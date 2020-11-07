@@ -7,4 +7,4 @@ class PriceBracketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PriceBracket
-        field = ('id', 'name')
+        fields = ('id', 'name')

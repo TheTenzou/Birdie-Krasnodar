@@ -10,7 +10,7 @@ class Restaurant(models.Model):
     # Тип еды
     food_type = models.ManyToManyField('FoodType')
     # Ценовая категория
-    price_bracket = models.ForeignKey('PriceBracket', on_delete=models.PROTECT)
+    price_bracket = models.ForeignKey('PriceBracket', related_name='price_bracket', on_delete=models.PROTECT)
     # Картинка для привью
     card_picture = models.FileField(
         upload_to='file_storage/restrant_card_picture', 

@@ -28,5 +28,5 @@ class RestaurantList(APIView):
 
     def get(self, request):
         restaurants = Restaurant.objects.all()
-        serializer = RestaurantSerializer(restaurants, many=True)
+        serializer = RestaurantSerializer(restaurants, many=True, context={"request":request})
         return Response(serializer.data)
