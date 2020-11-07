@@ -9,3 +9,6 @@ class RestaurantRating(models.Model):
     user = models.ForeignKey('User', related_name='user_rt', on_delete=models.CASCADE)
     # Оценка
     rating = models.FloatField()
+
+    class Meta:
+        unique_together = ('restaurant', 'user')
