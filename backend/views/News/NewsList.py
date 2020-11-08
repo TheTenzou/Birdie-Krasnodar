@@ -10,12 +10,5 @@ class NewsList(APIView):
 
     def get(self, request):
         news = News.objects.all()
-        t = list(news)
-        for tt in t:
-            print(tt)
-            print(tt.id)
-            print(tt.headline)
-
-        print('===================================================================================================')
         serializer = NewsShortSerializer(news, many=True, context={"request":request})
         return Response(serializer.data)
