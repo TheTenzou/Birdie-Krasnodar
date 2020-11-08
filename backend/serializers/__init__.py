@@ -7,3 +7,4 @@ from .Restaurant.Restaturant import *
 from .Restaurant.RestaurantDetail import *
 from .Restaurant.RestaurantPicture import *
 from .Restaurant.RestaurantRating import *
+from .News.News import *
