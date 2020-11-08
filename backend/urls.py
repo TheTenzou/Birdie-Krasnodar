@@ -5,6 +5,7 @@ from .views import *
 
 urlpatterns = [
     path('user/create/', UserCreate.as_view(), name='create_user'),
+    
     path('token/obtain/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),  # override sjwt stock token
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('restaurant/rating/delete/<str:pk>/', RestaurantRatingDelete.as_view(), name='restauratn_rating_delete'),
 
     path('restaurant/address/<str:restaurantId>/', AddressList.as_view(), name='address_list'),
-    path('restaurant/pictures_restaurant/<str:restaurantId>/', RestaurantPictureList.as_view(), name='address_list'),
+    path('restaurant/pictures_restaurant/<str:restaurantId>/', RestaurantPictureList.as_view(), name='restuarant_pictures'),
+    path('restaurant/pictures_food/<str:restaurantId>/', FoodPicturesList.as_view(), name='food_pictures'),
 ]

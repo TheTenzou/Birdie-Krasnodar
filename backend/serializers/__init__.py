@@ -1,6 +1,7 @@
 from .User import *
 from .Restaurant.Address import *
 from .Restaurant.FoodType import *
+from .Restaurant.FoodPictures import *
 from .Restaurant.PriceBracket import *
 from .Restaurant.Restaturant import *
 from .Restaurant.RestaurantDetail import *
