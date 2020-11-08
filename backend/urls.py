@@ -25,4 +25,5 @@ urlpatterns = [
     path('restaurant/price_bracket/', PriceBracketList.as_view(), name='price_bracket'),
 
     path('news/list/', NewsList.as_view(), name='news_list'),
+    path('news/by_id/<str:pk>/', NewsDetails.as_view(), name='news_details'),
 ]
