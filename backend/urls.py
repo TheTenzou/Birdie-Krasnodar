@@ -16,5 +16,6 @@ urlpatterns = [
     path('restaurant/rating/update/<str:pk>/', RestaurantRatingUpdate.as_view(), name='restauratn_rating_update'),
     path('restaurant/rating/delete/<str:pk>/', RestaurantRatingDelete.as_view(), name='restauratn_rating_delete'),
 
-    path('restaurant/address/<str:restaurantId>/', AddressList.as_view(), name='address_list')
+    path('restaurant/address/<str:restaurantId>/', AddressList.as_view(), name='address_list'),
+    path('restaurant/pictures_restaurant/<str:restaurantId>/', RestaurantPictureList.as_view(), name='address_list'),
 ]
