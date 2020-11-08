@@ -5,3 +5,4 @@ from .RestaurantPicturesList import *
 from .FoodPictureList import *
 from .FoodTypeList import *
 from .PriceBracketList import *
+from .RestaurantRatingView import *
