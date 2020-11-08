@@ -22,4 +22,5 @@ urlpatterns = [
     path('restaurant/pictures_food/<str:restaurantId>/', FoodPicturesList.as_view(), name='food_pictures'),
 
     path('restaurant/food_type/', FoodTypeList.as_view(), name='food_type'),
+    path('restaurant/price_bracket/', PriceBracketList.as_view(), name='price_bracket'),
 ]
