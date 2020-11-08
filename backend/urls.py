@@ -27,4 +27,5 @@ urlpatterns = [
     path('news/list/', NewsList.as_view(), name='news_list'),
     path('news/by_id/<str:pk>/', NewsDetails.as_view(), name='news_details'),
     path('news/types/', NewsTypeList.as_view(), name='news_type'),
+    path('news/pictures/', NewsPictureList.as_view(), name='news_pictures'),
 ]
