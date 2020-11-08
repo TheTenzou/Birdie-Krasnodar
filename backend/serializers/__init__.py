@@ -3,3 +3,5 @@ from .PriceBracketSerializer import *
 from .FoodTypeSerializer import *
 from .RestaturantSerializer import *
 from .RestaurantRatingSerializer import *
+from .AddressSerializer import *
+from .RestaurantDetailSerializer import *
