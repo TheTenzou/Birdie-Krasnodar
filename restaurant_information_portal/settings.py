@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'backend',
     'frontend',
     'rest_framework',
+    'mapwidgets',
 ]
 
 # Custom user model

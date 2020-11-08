@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib.gis.db import models
 from ..models import Restaurant, RestaurantPicture, FoodPicture, Address
+from mapwidgets.widgets import GooglePointFieldInlineWidget
 
 
 class RestaurantPicturesInLine(admin.TabularInline):
@@ -15,6 +17,9 @@ class FoodPicturesInLine(admin.TabularInline):
 class AddressInLine(admin.TabularInline):
     model = Address
     extra = 0
+    formfield_overrides = {
+        models.PointField: {"widget": GooglePointFieldInlineWidget}
+    }
 
 
 class RestaurantAdmin(admin.ModelAdmin):
