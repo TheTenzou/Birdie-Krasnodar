@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import FoodType
+from ...models import FoodType
 
 
 # Сериализатор типов еды

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from ..models import Restaurant, RestaurantRating
-from ..serializers import *
+from ...models import Restaurant, RestaurantRating
+from ...serializers import *
 from .RestaurantPicture import RestaurantPictureSerializer
 
 # Сериалезаторо ресторана

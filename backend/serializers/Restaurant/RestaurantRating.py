@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import RestaurantRating
+from ...models import RestaurantRating
 
 class RestaurantRatingSerializer(serializers.ModelSerializer):
 

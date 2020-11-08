@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import PriceBracket
+from ...models import PriceBracket
 
 
 # Сериализатор ценовых категорий
