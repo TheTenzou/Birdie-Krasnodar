@@ -1,2 +1,5 @@
-# Restaurant Information Portal
+# Birdie Krasnodar - Краснодарская Пташка 
+
 Самостаятельное задание по web программирования с 4 курса.
+
+
