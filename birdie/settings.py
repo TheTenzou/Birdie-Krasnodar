@@ -82,7 +82,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'restaurant_information_portal.urls'
+ROOT_URLCONF = 'birdie.urls'
 
 TEMPLATES = [
     {
@@ -100,7 +100,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'restaurant_information_portal.wsgi.application'
+WSGI_APPLICATION = 'birdie.wsgi.application'
 
 
 # Database
@@ -110,7 +110,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         # TODO: use enviroment variables for database credentials
-        'NAME': 'restaurant-information-portal-database',
+        'NAME': 'birdie',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
