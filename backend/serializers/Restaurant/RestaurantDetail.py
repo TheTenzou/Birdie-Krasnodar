@@ -1,7 +1,11 @@
 
 from rest_framework import serializers
 from ...models import Restaurant, RestaurantRating
-from ...serializers import PriceBracketSerializer, FoodTypeSerializer, AddressSerializer, RestaurantPictureSerializer
+# from ...serializers import PriceBracketSerializer, FoodTypeSerializer, AddressSerializer, RestaurantPictureSerializer
+from .PriceBracket import PriceBracketSerializer
+from .FoodType import FoodTypeSerializer
+from .Address import AddressSerializer
+from .RestaurantPicture import RestaurantPictureSerializer
 
 # Сериалезаторо ресторана
 class RestaurantDetailSerializer(serializers.ModelSerializer):

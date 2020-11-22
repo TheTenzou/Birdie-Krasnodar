@@ -12,7 +12,7 @@ from ...models import Restaurant
 class RestaurantList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
     queryset = Restaurant.objects.all()
-    serializer_class = RestaurantDetailSerializer
+    serializer_class = RestaurantSerializer
     pagination_class = PageNumberPagination
     filter_backends = (SearchFilter, OrderingFilter)
     search_fields = ('name', 'description', 'food_type__name', 'price_bracket__name')

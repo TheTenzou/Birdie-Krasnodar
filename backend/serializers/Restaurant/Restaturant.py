@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from ...models import Restaurant, RestaurantRating
-from ...serializers import *
-from .RestaurantPicture import RestaurantPictureSerializer
+# from ...serializers import *
+from .PriceBracket import PriceBracketSerializer
+from .FoodType import FoodTypeSerializer
 
 # Сериалезаторо ресторана
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -12,7 +13,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Restaurant
-        fields = ('id', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'restaurant_pictures')
+        fields = ['id', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'slug']
     
     def get_rating(self, obj):
         ratings = list(RestaurantRating.objects.filter(restaurant=obj.id))
@@ -20,4 +21,6 @@ class RestaurantSerializer(serializers.ModelSerializer):
         summ = 0
         for rating in ratings:
             summ += rating.rating
+        if len(ratings) == 0:
+            return 0
         return summ / len(ratings)
