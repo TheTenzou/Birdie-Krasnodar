@@ -8,7 +8,7 @@ from ...models import News
 class NewsDetails(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def get(self, request, pk):
-        news = News.objects.get(id=pk)
+    def get(self, request, slug):
+        news = News.objects.get(slug=slug)
         serializer = NewsShortSerializer(news, many=False, context={"request":request})
         return Response(serializer.data)

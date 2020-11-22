@@ -8,7 +8,7 @@ class NewsPictures(admin.TabularInline):
 
 
 class NewsAdmin(admin.ModelAdmin):
-    fields = ('headline', 'news_type', 'news_text', 'card_picture')
+    fields = ('headline', 'news_type', 'news_text', 'card_picture', 'slug')
     inlines = [
         NewsPictures,
     ]
@@ -23,6 +23,7 @@ class NewsAdmin(admin.ModelAdmin):
         # form.base_fields['publication_date'].label = 'Дата публикации'
         form.base_fields['news_type'].label = 'Тип новости'
         form.base_fields['card_picture'].label = 'Картинка карточки'
+        form.base_fields['slug'].label = 'url'
         return form
 
 
