@@ -14,7 +14,7 @@ class RestaurantDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Restaurant
-        fields = ['id', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures', 'slug']
+        fields = ['id', 'name', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures', 'slug']
     
     def get_rating(self, obj):
         ratings = list(RestaurantRating.objects.filter(restaurant=obj.id))
