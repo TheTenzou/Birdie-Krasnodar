@@ -5,6 +5,7 @@ from .PriceBracket import PriceBracketSerializer
 from .FoodType import FoodTypeSerializer
 from .Address import AddressSerializer
 from .RestaurantPicture import RestaurantPictureSerializer
+from .FoodPictures import FoodPictureSerializer
 
 # Сериалезаторо ресторана
 class RestaurantDetailSerializer(serializers.ModelSerializer):
@@ -14,10 +15,11 @@ class RestaurantDetailSerializer(serializers.ModelSerializer):
     rating = serializers.SerializerMethodField()
     address = AddressSerializer(many=True, read_only=True)
     restaurant_pictures = RestaurantPictureSerializer(many=True, read_only=True)
-
+    food_pictures = FoodPictureSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Restaurant
-        fields = ['id', 'name', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures']
+        fields = ['id', 'name', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures', 'food_pictures']
     
     def get_rating(self, obj):
         ratings = list(RestaurantRating.objects.filter(restaurant=obj.id))
