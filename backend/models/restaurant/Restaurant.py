@@ -17,6 +17,7 @@ class Restaurant(models.Model):
         blank=True, 
         null=True
     )
+    slug = models.SlugField(blank=False, unique=True)
 
     class Meta:
         ordering = ['name']

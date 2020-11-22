@@ -39,6 +39,7 @@ class RestaurantAdmin(admin.ModelAdmin):
         form.base_fields['food_type'].label = 'Тип еды'
         form.base_fields['price_bracket'].label = 'Ценавой диапозон'
         form.base_fields['card_picture'].label = 'Кратинка для карточки'
+        form.base_fields['slug'].label = 'url'
         return form
 
 

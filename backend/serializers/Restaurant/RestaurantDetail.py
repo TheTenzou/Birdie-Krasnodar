@@ -14,7 +14,7 @@ class RestaurantDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Restaurant
-        fields = ['id', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures']
+        fields = ['id', 'description', 'food_type', 'price_bracket', 'card_picture', 'rating', 'address', 'restaurant_pictures', 'slug']
     
     def get_rating(self, obj):
         ratings = list(RestaurantRating.objects.filter(restaurant=obj.id))
@@ -22,4 +22,6 @@ class RestaurantDetailSerializer(serializers.ModelSerializer):
         summ = 0
         for rating in ratings:
             summ += rating.rating
+        if len(ratings) == 0:
+            return 0
         return summ / len(ratings)

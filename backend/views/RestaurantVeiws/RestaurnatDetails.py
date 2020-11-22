@@ -9,7 +9,7 @@ from ...models import Restaurant
 class RestaurantDetails(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def get(self, request, pk):
-        restaurants = Restaurant.objects.get(id=pk)
+    def get(self, request, slug):
+        restaurants = Restaurant.objects.get(slug=slug)
         serializer = RestaurantDetailSerializer(restaurants, many=False, context={"request":request})
         return Response(serializer.data)
