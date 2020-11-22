@@ -25,7 +25,7 @@ urlpatterns = [
     path('restaurant/food_type/', FoodTypeList.as_view(), name='food_type'),
     path('restaurant/price_bracket/', PriceBracketList.as_view(), name='price_bracket'),
 
-    path('news/list/<int:first>/<int:last>/', NewsList.as_view(), name='news_list'),
+    path('news/list/', NewsList.as_view(), name='news_list'),
     path('news/<slug>/', NewsDetails.as_view(), name='news_details'),
     path('news/types/', NewsTypeList.as_view(), name='news_type'),
     path('news/pictures/', NewsPictureList.as_view(), name='news_pictures'),
