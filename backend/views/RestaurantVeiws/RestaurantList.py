@@ -1,15 +1,15 @@
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListAPIView
 
 from ...serializers import RestaurantSerializer, RestaurantDetailSerializer
 from ...models import Restaurant
 
 
-class RestaurantList(APIView):
+class RestaurantList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
-
-    def get(self, request, first, last):
-        restaurants = Restaurant.objects.all()[first-1:last]
-        serializer = RestaurantDetailSerializer(restaurants, many=True, context={"request":request})
-        return Response(serializer.data)
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantDetailSerializer
+    pagination_class = PageNumberPagination

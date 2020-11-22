@@ -9,7 +9,8 @@ urlpatterns = [
     path('token/obtain/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),  # override sjwt stock token
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
-    path('restaurant/list/<int:first>/<int:last>/', RestaurantList.as_view(), name='restaurant_list'),
+    # path('restaurant/list/<int:first>/<int:last>/', RestaurantList.as_view(), name='restaurant_list'),
+    path('restaurant/list/', RestaurantList.as_view(), name='restaurant_list'),
     path('restaurant/<slug>/', RestaurantDetails.as_view(), name='restaurant_detail'),
 
     path('restaurant/rating/list/', RestaurantRatingList.as_view(), name='restaurant_rating_list'),
