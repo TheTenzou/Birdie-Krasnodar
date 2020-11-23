@@ -1,16 +1,18 @@
 from django.db import models
+from users.models import User
+from restaurants.models import Restaurant
 
 
 # Обзор ресторана
 class Review(models.Model):
     # пользователь
-    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     # ресторан
-    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     # пользователи проголосовавшие положительно
-    up_voite_users = models.ManyToManyField('User', related_name='up_voite_users')
+    up_voite_users = models.ManyToManyField(User, related_name='up_voite_users')
     # пользователи проголосовавшие отрицательно
-    down_voite_users = models.ManyToManyField('User', related_name='down_voite_users')
+    down_voite_users = models.ManyToManyField(User, related_name='down_voite_users')
     # заголовок
     headline = models.CharField(max_length=100)
     # текст обзора
