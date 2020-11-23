@@ -1,6 +1,6 @@
 # from django.db import models
 from django.contrib.gis.db import models
-from backend.models import User
+from users.models import User
 
 
 # Ресторан

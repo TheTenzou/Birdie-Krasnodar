@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'backend',
+    # 'backend',
     'frontend',
     'rest_framework',
     'mapwidgets',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 # Custom user model
-AUTH_USER_MODEL = "backend.User"
+AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
