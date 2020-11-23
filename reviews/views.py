@@ -43,3 +43,20 @@ class ReviewCreate(APIView):
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ReviewUpdate(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, pk, format='json'):
+        review = Review.objects.get(id=pk)
+        serializer = ReviewAllFieldsSerializer(instance=review, data=request.data)
+
+        if serializer.is_valid():
+            new_review = serializer.save()
+            if new_review:
+                json = serializer.data
+                return Response(json, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
