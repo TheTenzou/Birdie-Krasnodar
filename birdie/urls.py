@@ -20,9 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include('backend.urls')),
     path('api/restaurants/', include('restaurants.urls')),
     path('api/news/', include('news.urls')),
     path('api/user/', include('users.urls')),
+    path('api/reviews/', include('reviews.urls')),
     path('', include('frontend.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

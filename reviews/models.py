@@ -10,9 +10,9 @@ class Review(models.Model):
     # ресторан
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     # пользователи проголосовавшие положительно
-    up_voite_users = models.ManyToManyField(User, related_name='up_voite_users', blank=True)
+    up_vote_users = models.ManyToManyField(User, related_name='up_voite_users', blank=True)
     # пользователи проголосовавшие отрицательно
-    down_voite_users = models.ManyToManyField(User, related_name='down_voite_users', blank=True)
+    down_vote_users = models.ManyToManyField(User, related_name='down_voite_users', blank=True)
     # заголовок
     headline = models.CharField(max_length=100)
     # текст обзора
