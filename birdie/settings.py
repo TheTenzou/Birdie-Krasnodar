@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'mapwidgets',
     'django_filters',
     'restaurants',
+    'news',
 ]
 
 # Custom user model
