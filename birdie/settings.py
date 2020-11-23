@@ -39,14 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    # 'backend',
+    'restaurants',
+    'news',
+    'users',
+    'reviews',
+    'comments',
     'frontend',
     'rest_framework',
     'mapwidgets',
     'django_filters',
-    'restaurants',
-    'news',
-    'users'
 ]
 
 # Custom user model
