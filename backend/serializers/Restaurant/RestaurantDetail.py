@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 from ...models import Restaurant, RestaurantRating
 from .PriceBracket import PriceBracketSerializer

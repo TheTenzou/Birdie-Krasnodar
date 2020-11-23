@@ -10,7 +10,7 @@ class News(models.Model):
     # дата публикации
     publication_date = models.DateTimeField(auto_now_add=True)
     # тип новости
-    news_type = models.ForeignKey('NewsType', on_delete=models.PROTECT)
+    news_type = models.ForeignKey('NewsType', related_name='news_type', on_delete=models.PROTECT)
     # превью фото
     card_picture = models.FileField(
         upload_to='file_storage/news_picture_card',

@@ -2,7 +2,7 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ...serializers import NewsSerializer, NewsShortSerializer
+from ...serializers import NewsSerializer
 from ...models import News
 
 class NewsDetails(APIView):
@@ -10,5 +10,5 @@ class NewsDetails(APIView):
 
     def get(self, request, slug):
         news = News.objects.get(slug=slug)
-        serializer = NewsShortSerializer(news, many=False, context={"request":request})
+        serializer = NewsSerializer(news, many=False, context={"request":request})
         return Response(serializer.data)
