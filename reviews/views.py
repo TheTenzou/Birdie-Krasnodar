@@ -60,3 +60,12 @@ class ReviewUpdate(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ReviewDelete(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def delete(self, request, pk):
+        if Review.objects.filter(id=pk).exists():
+            review = Review.objects.get(id=pk)
+            review.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
