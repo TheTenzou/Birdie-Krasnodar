@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'restaurants',
     'news',
+    'users'
 ]
 
 # Custom user model
