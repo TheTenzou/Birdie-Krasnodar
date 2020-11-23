@@ -5,8 +5,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 from django_filters import rest_framework as filters
 
-from ...serializers import RestaurantSerializer 
-from ...models import Restaurant
+from ..serializers import RestaurantSerializer 
+from ..models import Restaurant
 
 class RestaurntFilters(filters.FilterSet):
 

@@ -2,8 +2,8 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ....serializers import RestaurantRatingSerializer
-from ....models import RestaurantRating
+from ...serializers import RestaurantRatingSerializer
+from ...models import RestaurantRating
 
 
 class RestaurnatRatingCreate(APIView):

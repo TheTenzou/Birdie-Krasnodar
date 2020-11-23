@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'mapwidgets',
     'django_filters',
+    'restaurants',
 ]
 
 # Custom user model
