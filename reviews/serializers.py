@@ -21,3 +21,9 @@ class ReviewAllFieldsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+
+class ReviewVoteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ReviewVote
+        fields = '__all__'

@@ -35,3 +35,6 @@ class ReviewVote(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     positive = models.BooleanField()
+
+    class Meta:
+        unique_together = ('review', 'user')

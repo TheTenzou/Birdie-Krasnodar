@@ -7,8 +7,8 @@ from rest_framework.filters import OrderingFilter
 
 from django_filters import rest_framework as filters
 
-from .serializers import ReviewSerializer, ReviewAllFieldsSerializer
-from .models import Review
+from .serializers import ReviewSerializer, ReviewAllFieldsSerializer, ReviewVoteSerializer
+from .models import Review, ReviewVote
 
 
 class ReviewFilters(filters.FilterSet):
@@ -66,6 +66,46 @@ class ReviewDelete(APIView):
     def delete(self, request, pk):
         if Review.objects.filter(id=pk).exists():
             review = Review.objects.get(id=pk)
+            review.delete()
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class ReviewVoteCreate(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format='json'):
+        serializer = ReviewVoteSerializer(data=request.data)
+
+        if serializer.is_valid():
+            review = serializer.save()
+            if review:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ReviewVoiteUpdate(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, review, user, format='json'):
+        review = ReviewVote.objects.get(review=review, user=user)
+        serializer = ReviewVoteSerializer(instance=review, data=request.data)
+
+        if serializer.is_valid():
+            new_review = serializer.save()
+            if new_review:
+                json = serializer.data
+                return Response(json, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReviewVoteDelete(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def delete(self, request, review, user):
+        if ReviewVote.objects.filter(review=review, user=user).exists():
+            review = ReviewVote.objects.get(review=review, user=user)
             review.delete()
             return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
