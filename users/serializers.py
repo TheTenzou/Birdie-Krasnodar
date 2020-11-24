@@ -33,12 +33,12 @@ class UserDetailSerializer(serializers.ModelSerializer):
             'password': {
                 'write_only': True,
                 'required': False
-                 }
+                 },
+            'username': {'required': False}
         }
 
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
-        # instance = self.Meta.model(**validated_data)  # TODO redo
         instance = super(UserDetailSerializer, self).update(instance, validated_data)
         if password is not None:
             instance.set_password(password)
