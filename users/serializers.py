@@ -23,3 +23,24 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+class UserDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('username', 'password', 'first_name', 'last_name', 'email', 'date_joined', 'last_login', 'profile_picture')
+        extra_kwargs = {
+            'password': {
+                'write_only': True,
+                'required': False
+                 }
+        }
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        # instance = self.Meta.model(**validated_data)  # TODO redo
+        instance = super(UserDetailSerializer, self).update(instance, validated_data)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance
