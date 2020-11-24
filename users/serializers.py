@@ -25,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
 class UserDetailSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.FileField(max_length=None, use_url=True, allow_null=True, required=False)
 
     class Meta:
         model = User
