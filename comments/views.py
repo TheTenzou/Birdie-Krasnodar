@@ -28,3 +28,17 @@ class CommentList(ListAPIView):
     filter_backends = (OrderingFilter, filters.DjangoFilterBackend)
     filterset_class = CommentFilters
     ordering_fields = ('publication_date',)
+
+
+class CommentsCreate(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format='json'):
+        serializer = CommentSerializer(data=request.data)
+
+        if serializer.is_valid():
+            comment = serializer.save()
+            if comment:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
