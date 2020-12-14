@@ -240,3 +240,6 @@ file_storage
 
 # bundles
 bundle.js
+
+# static
+static
