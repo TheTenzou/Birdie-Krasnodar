@@ -8,6 +8,7 @@ from ..models import Restaurant
 
 class RestaurantDetails(APIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
 
     def get(self, request, slug):
         restaurants = Restaurant.objects.get(slug=slug)

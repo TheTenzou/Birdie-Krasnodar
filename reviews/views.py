@@ -23,6 +23,7 @@ class ReviewFilters(filters.FilterSet):
 
 class ReviewList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     pagination_class = PageNumberPagination

@@ -20,6 +20,7 @@ class RestaurntFilters(filters.FilterSet):
 class RestaurantList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
     queryset = Restaurant.objects.all()
+    authentication_classes = ()
     serializer_class = RestaurantSerializer
     pagination_class = PageNumberPagination
     filter_backends = (SearchFilter, OrderingFilter, filters.DjangoFilterBackend)

@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from .models import Review, ReviewVote
+from users.serializers import UserSerializerLite
 
 class ReviewSerializer(serializers.ModelSerializer):
     up_votes = serializers.SerializerMethodField()
     down_votes = serializers.SerializerMethodField()
+    user = UserSerializerLite(many=False, read_only=True)
 
     class Meta:
         model = Review

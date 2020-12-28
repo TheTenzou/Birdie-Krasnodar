@@ -24,6 +24,14 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+        
+class UserSerializerLite(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name')
+
+
 class UserDetailSerializer(serializers.ModelSerializer):
     profile_picture = serializers.FileField(max_length=None, use_url=True, allow_null=True, required=False)
 
