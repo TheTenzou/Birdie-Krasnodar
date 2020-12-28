@@ -22,6 +22,7 @@ class CommentFilters(filters.FilterSet):
 
 class CommentList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     pagination_class = PageNumberPagination

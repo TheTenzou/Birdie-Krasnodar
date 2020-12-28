@@ -40,6 +40,7 @@ class NewsFildters(filters.FilterSet):
 
 class NewsList(ListAPIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
     queryset = News.objects.all()
     serializer_class = NewsShortSerializer
     pagination_class = PageNumberPagination
@@ -51,6 +52,7 @@ class NewsList(ListAPIView):
 
 class NewsDetails(APIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = ()
 
     def get(self, request, slug):
         news = News.objects.get(slug=slug)
