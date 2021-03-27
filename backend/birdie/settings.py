@@ -26,7 +26,7 @@ SECRET_KEY = 'pjia4jw9bnm#3=yi)c1gtc!d^h!hsgc=gt$qfwq8*y6@=r3g97'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -95,7 +95,7 @@ ROOT_URLCONF = 'birdie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR.joinpath('templates') ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
