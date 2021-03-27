@@ -1,8 +1,0 @@
-.btn:not(:disabled):not(.disabled) {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 225px;
-  font-family: Roboto, sans-serif;
-}
-
