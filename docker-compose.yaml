@@ -1,0 +1,34 @@
+version: '3.8'
+
+volumes: 
+  database_volume:
+
+services: 
+  backend:
+    container_name: backend
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes: 
+      - ./backend/:/usr/src/app/
+    env_file: 
+      - ./.venv.dev
+    ports: 
+      - 8000:8000
+    expose: 
+      - 8000
+    depends_on: 
+      - database
+    command: bash -c 'while !</dev/tcp/database/5432; do sleep 1; done; python manage.py runserver 0.0.0.0:8000'
+  
+  database:
+    container_name: database
+    image: postgis/postgis:latest
+    volumes: 
+      - database_volume:/var/lib/postgresql/data
+    env_file: 
+      - ./.venv.dev
+    ports: 
+      - 5432:5432
+    expose: 
+      - 5432
