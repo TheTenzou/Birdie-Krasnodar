@@ -1,0 +1,48 @@
+# Bilder
+FROM python:3.8.8-buster as builder
+
+WORKDIR /usr/src/birdie
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update -y && apt-get upgrade -y
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/birdie/wheels -r requirements.txt
+
+# Final
+FROM python:3.8.8-buster
+
+RUN mkdir -p /home/birdie
+
+RUN addgroup --system birdie && adduser --system --group birdie
+
+ENV HOME=/home/birdie
+ENV BIRDIE_HOME=/home/birdie/web
+RUN mkdir ${BIRDIE_HOME}
+WORKDIR ${BIRDIE_HOME}
+
+RUN apt-get update -y && apt-get upgrade -y
+
+RUN apt-get install -y gdal-bin libgdal-dev
+RUN apt-get install -y python3-gdal
+RUN apt-get install -y binutils libproj-dev
+
+RUN apt-get install -y netcat
+
+RUN apt-get install -y libpq-dev
+COPY --from=builder /usr/src/birdie/wheels /wheels
+COPY --from=builder /usr/src/birdie/requirements.txt .
+RUN pip install --no-cache /wheels/*
+
+COPY ./entrypoint.prod.sh ${BIRDIE_HOME}
+
+COPY . ${BIRDIE_HOME}
+
+RUN chown -R birdie:birdie ${BIRDIE_HOME}
+
+USER birdie
+
+ENTRYPOINT [ "/home/birdie/web/entrypoint.prod.sh" ] 
