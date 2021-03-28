@@ -22,6 +22,8 @@ RUN addgroup --system birdie && adduser --system --group birdie
 ENV HOME=/home/birdie
 ENV BIRDIE_HOME=/home/birdie/web
 RUN mkdir ${BIRDIE_HOME}
+RUN mkdir ${BIRDIE_HOME}/static
+RUN mkdir ${BIRDIE_HOME}/media
 WORKDIR ${BIRDIE_HOME}
 
 RUN apt-get update -y && apt-get upgrade -y
