@@ -14,3 +14,5 @@ SQL_PASSWORD=postgres
 SQL_HOST=database
 SQL_PORT=5432
 
+DATABASE=postgres
+

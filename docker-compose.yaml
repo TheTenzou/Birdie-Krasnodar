@@ -19,7 +19,8 @@ services:
       - 8000
     depends_on: 
       - database
-    command: bash -c 'while !</dev/tcp/database/5432; do sleep 1; done; python manage.py runserver 0.0.0.0:8000'
+    # command: bash -c 'while !</dev/tcp/database/5432; do sleep 1; done; python manage.py runserver 0.0.0.0:8000'
+    command: python manage.py runserver 0.0.0.0:8000
   
   database:
     container_name: database
