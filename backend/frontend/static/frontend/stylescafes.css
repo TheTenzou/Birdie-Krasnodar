@@ -1,0 +1,17 @@
+img {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+}
+
+.h4, h4 {
+  display: block;
+  /*margin-left: 10%;*/
+  /*margin-right: 10%;*/
+  margin-top: 5%;
+}
+
+p {
+  margin-top: 3%;
+}
+

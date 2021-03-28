@@ -1,0 +1,11 @@
+.form-control {
+  width: 50%;
+  margin-top: -3%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: medium;
+  font-family: 'Roboto';
+  display: block;
+  text-align: center;
+}
+
