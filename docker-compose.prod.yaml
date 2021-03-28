@@ -9,7 +9,8 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume_prod:/home/app/web/static
+      - static_volume_prod:/home/birdie/web/static
+      - media_volume_prod:/home/birdie/web/media 
     ports:
       - 9000:80
     depends_on: 
@@ -21,8 +22,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile.prod
     volumes:
-      - static_volume_prod:/home/app/web/static
-      - media_volume_prod:/home/app/web/media
+      - static_volume_prod:/home/birdie/web/static
+      - media_volume_prod:/home/birdie/web/media
     env_file: 
       - ./.prod.env
     expose: 

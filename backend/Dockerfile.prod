@@ -35,15 +35,13 @@ RUN apt-get install -y binutils libproj-dev
 RUN apt-get install -y netcat
 
 RUN apt-get install -y libpq-dev
-COPY --from=builder /usr/src/birdie/wheels /wheels
-COPY --from=builder /usr/src/birdie/requirements.txt .
+COPY --chown=birdie:birdie --from=builder /usr/src/birdie/wheels /wheels
+COPY --chown=birdie:birdie --from=builder /usr/src/birdie/requirements.txt .
 RUN pip install --no-cache /wheels/*
 
-COPY ./entrypoint.prod.sh ${BIRDIE_HOME}
+COPY --chown=birdie:birdie ./entrypoint.prod.sh ${BIRDIE_HOME}
 
-COPY . ${BIRDIE_HOME}
-
-RUN chown -R birdie:birdie ${BIRDIE_HOME}
+COPY --chown=birdie:birdie . ${BIRDIE_HOME}
 
 USER birdie
 
