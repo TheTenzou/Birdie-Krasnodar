@@ -1,0 +1,28 @@
+version: '3.8'
+
+volumes: 
+  database_volume_prod:
+
+services: 
+  backend_prod:
+    container_name: backend_prod
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file: 
+      - ./.prod.env
+    ports: 
+      - 8000:8000
+    expose: 
+      - 8000
+    depends_on: 
+      - database_prod
+    command: gunicorn birdie.wsgi:application --bind 0.0.0.0:8000
+  
+  database_prod:
+    container_name: database_prod
+    image: postgis/postgis:latest
+    volumes: 
+      - database_volume_prod:/var/lib/postgresql/data
+    env_file: 
+      - ./.prod.db.env
