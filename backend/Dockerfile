@@ -1,6 +1,6 @@
 FROM python:3.8.8-buster
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/birdie
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -22,4 +22,4 @@ COPY ./entrypoint.sh .
 
 COPY . .
 
-ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
+ENTRYPOINT [ "/usr/src/birdie/entrypoint.sh" ]
