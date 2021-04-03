@@ -32,6 +32,11 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 # ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 
+from glob import glob
+
+GDAL_LIBRARY_PATH=glob('/usr/lib/libgdal.so.*')[0]
+GEOS_LIBRARY_PATH=glob('/usr/lib/libgeos_c.so.*')[0]
+
 # Application definition
 
 INSTALLED_APPS = [
