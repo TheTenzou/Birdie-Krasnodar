@@ -12,7 +12,7 @@ services:
       - static_volume_prod:/home/birdie/web/static
       - media_volume_prod:/home/birdie/web/media 
     ports:
-      - 9000:80
+      - 8000:80
     depends_on: 
       - backend_prod
 
@@ -26,8 +26,6 @@ services:
       - media_volume_prod:/home/birdie/web/media
     env_file: 
       - ./.prod.env
-    expose: 
-      - 8000
     depends_on: 
       - database_prod
     command: gunicorn birdie.wsgi:application --bind 0.0.0.0:8000
