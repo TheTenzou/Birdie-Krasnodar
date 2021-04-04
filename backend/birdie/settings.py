@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'users',
     'reviews',
     'comments',
-    'frontend',
     'rest_framework',
     'mapwidgets',
     'django_filters',
