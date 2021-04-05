@@ -3,14 +3,18 @@ import Landing from './components/landing/landing'
 import Footer from './components/footer/footer'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 function App() {
   return (
     <>
       <Router>
         <Navbar/>
+
         <Switch>
-          <Route exact path="/News"/>
+          <Route exact path="/" component={Landing}/>
         </Switch>
+        
         <Footer/>
       </Router>
     </>
