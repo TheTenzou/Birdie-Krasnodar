@@ -3,7 +3,7 @@ import Landing from './components/landing/landing'
 import Footer from './components/footer/footer'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 function App() {
   return (
